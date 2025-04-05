@@ -1,0 +1,57 @@
+name: Rust CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Rust
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+
+    # Step 3: Cache dependencies
+    - name: Cache Cargo registry
+      uses: actions/cache@v3
+      with:
+        path: ~/.cargo/registry
+        key: ${{ runner.os }}-cargo-registry
+        restore-keys: |
+          ${{ runner.os }}-cargo-registry
+
+    - name: Cache Cargo build
+      uses: actions/cache@v3
+      with:
+        path: target
+        key: ${{ runner.os }}-cargo-build
+        restore-keys: |
+          ${{ runner.os }}-cargo-build
+
+    # Step 4: Build the project
+    - name: Build the project
+      run: cargo build --release
+
+    # Step 5: Run tests
+    - name: Run tests
+      run: cargo test --verbose
+
+    # Step 6: Deploy the application
+    - name: Deploy the application
+      env:
+        IP: "0.0.0.0" # Set the IP for deployment
+        PORT: "8080"  # Set the port for deployment
+      run: cargo run --release
