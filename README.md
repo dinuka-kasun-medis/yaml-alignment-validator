@@ -7,11 +7,20 @@ The **YAML Alignment Validator Tool** is a Rust-based application that provides 
 ## Project Structure
 
 ```text
-src/
-├── main.rs
-├── handlers.rs
-├── models.rs
-└── validator.rs
+yaml_alignment_validator/
+├── src/
+│   ├── main.rs          # Entry point of the application
+│   ├── handlers.rs      # Contains HTTP request handlers
+│   ├── models.rs        # Defines data models used in the application
+│   ├── validator.rs     # Core logic for YAML alignment validation
+│   └── util/            # Utility functions and helpers
+│       └── UI.png       # Screenshot or assets for the web UI
+├── templates/
+│   └── index.html       # HTML template for the web interface
+├── config.toml          # Configuration file for the application
+├── Cargo.toml           # Rust project configuration file
+├── Cargo.lock           # Dependency lock file
+├── README.md            # Project documentation
 ```
 
 ## Features
@@ -23,18 +32,21 @@ src/
 
 ## Installation
 
-1. Clone the repository:  
+1. Clone the repository:
+
     ```bash
     git clone https://github.com/dinuka-kasun-medis/yaml-alignment-validator.git
     cd yaml-alignment-validator
     ```
 
 2. Build the project:  
+
     ```bash
     cargo build
     ```
 
-3. Run the application:  
+3. Run the application:
+
     ```bash
     cargo run
     ```
