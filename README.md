@@ -12,6 +12,7 @@ src/
 ├── handlers.rs
 ├── models.rs
 └── validator.rs
+```
 
 ## Features
 
