@@ -4,6 +4,15 @@
 
 The **YAML Alignment Validator Tool** is a Rust-based application that provides a simple and intuitive web browser UI to validate the line alignments of YAML files. This tool ensures that your YAML files are properly aligned, reducing the risk of syntax errors and improving readability.
 
+## Project Structure
+
+```text
+src/
+├── main.rs
+├── handlers.rs
+├── models.rs
+└── validator.rs
+
 ## Features
 
 - **Web Browser UI**: User-friendly interface for validating YAML files.  
@@ -15,18 +24,18 @@ The **YAML Alignment Validator Tool** is a Rust-based application that provides 
 
 1. Clone the repository:  
     ```bash
-    git clone https://github.com/your-username/yaml-alignment-validator.git
+    git clone https://github.com/dinuka-kasun-medis/yaml-alignment-validator.git
     cd yaml-alignment-validator
     ```
 
 2. Build the project:  
     ```bash
-    cargo build --release
+    cargo build
     ```
 
 3. Run the application:  
     ```bash
-    ./target/release/yaml_alignment_validator
+    cargo run
     ```
 
 ## Usage
@@ -38,10 +47,6 @@ The **YAML Alignment Validator Tool** is a Rust-based application that provides 
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.  
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).  
 
 ## Acknowledgments
 
