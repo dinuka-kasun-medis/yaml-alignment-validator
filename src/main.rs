@@ -7,6 +7,7 @@ mod validator;
 use actix_web::{App, HttpServer, web};
 use serde::Deserialize;
 use std::fs;
+use std::env;
 use std::io::Result;
 
 /// Struct to hold configuration values
@@ -35,5 +36,15 @@ async fn main() -> Result<()> {
 fn load_config() -> Config {
     let config_content: String =
         fs::read_to_string("Config.toml").expect("Failed to read configuration file");
-    toml::from_str(&config_content).expect("Failed to parse configuration file")
+    let mut config: Config = toml::from_str(&config_content).expect("Failed to parse configuration file");
+
+    // Override with environment variables if they are set
+    if let Ok(ip) = env::var("IP") {
+        config.ip = ip;
+    }
+    if let Ok(port) = env::var("PORT") {
+        config.port = port.parse().expect("Invalid PORT value");
+    }
+
+    config
 }
